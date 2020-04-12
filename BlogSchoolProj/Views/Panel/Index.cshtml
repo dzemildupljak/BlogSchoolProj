@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Post>
+@{
+    ViewData["Title"] = "Admin Panel";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<div class="container">
+    <ul>
+        @foreach (var post in Model)
+        {
+            <li>
+                <a asp-controller="Home" asp-action="Post" asp-route-id="@post.Id"><h2>@post.Title</h2></a>
+                <a class="btn btn-sm btn-outline-info" asp-action="Edit" asp-route-id="@post.Id">Edit</a>
+                <a class="btn btn-sm btn-outline-danger" asp-action="Delete" asp-route-id="@post.Id">Delete</a>
+            </li>
+        }
+    </ul>
+</div>

@@ -1,0 +1,27 @@
+﻿@model BlogSchoolProj.ViewModels.CommentViewModel
+
+<h4>CommentViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Comment">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="PostId" type="hidden"/>
+            <input asp-for="MainCommentId" type="hidden"/>
+            <div class="form-group">
+                <label asp-for="Massage" class="control-label">Comment</label>
+                <textarea asp-for="Massage" class="form-control"></textarea>
+                @*<input asp-for="Massage" class="form-control" />*@
+                <span asp-validation-for="Massage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Comment" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
