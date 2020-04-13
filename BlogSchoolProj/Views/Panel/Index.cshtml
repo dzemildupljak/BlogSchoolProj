@@ -3,19 +3,35 @@
     ViewData["Title"] = "Admin Panel";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('img/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>Clean Blog</h1>
+                    <span class="subheading">A Blog Theme by Start Bootstrap</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
 <div class="container">
-    <ul>
-        @foreach (var post in Model)
-        {
-            <li>
-                <a asp-controller="Home" asp-action="Post" asp-route-id="@post.Id"><h2>@post.Title</h2></a>
-                <a class="btn btn-sm btn-outline-info" asp-action="Edit" asp-route-id="@post.Id">Edit</a>
-                <a class="btn btn-sm btn-outline-danger" asp-action="Delete" asp-route-id="@post.Id">Delete</a>
-            </li>
-        }
-    </ul>
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <ul>
+                @foreach (var post in Model)
+                {
+                    <li>
+                        <a asp-controller="Home" asp-action="Post" asp-route-id="@post.Id"><h5>@post.Title</h5></a>
+                        <a class="btn-sm btn-outline-info" asp-action="Edit" asp-route-id="@post.Id">Edit</a>
+                        <a class="btn-sm btn-outline-danger" asp-action="Delete" asp-route-id="@post.Id">Delete</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
 </div>

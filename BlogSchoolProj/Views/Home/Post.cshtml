@@ -4,37 +4,56 @@
     ViewBag.Description = Model.Description;
     ViewBag.Keyword = $"{Model.Tags?.Replace(",", " ")} {Model.Category}";
     var base_path = Context.Request.PathBase;
+
 }
 
+<header class="masthead" style="background-image: @(!String.IsNullOrEmpty(Model.Image) ? $"{base_path}/Image/{Model.Image}" : "")">
+    <div class="overlay"></div>
     <div class="container">
-        <h1>@Model.Title</h1>
-        <h5>@Model.Created</h5>
-        <p>@Model.Category</p>
-        <br />
-        <div class="col-md-6">
-            <p class="text-break">@Model.Body</p>
-        </div>
-        @if (!String.IsNullOrEmpty(Model.Image))
-        {
-            var imagePath = $"{base_path}/Image/{Model.Image}";
-            <img class="col-4" src="@imagePath" alt="Alternate Text" />
-        }
-    </div>
-    <hr />
-    <br />
-    <br />
-    <div class="container">
-        @foreach (var comm in Model.MainComments)
-        {
-            <div class="container" style="margin: 15px;">
-                <p>
-                    @comm.Message
-                </p>
-                <p class="float-right">Posted: @comm.CreatedComment</p>
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="post-heading">
+                    <h1>@Model.Title</h1>
+                    <h2 class="subheading">@Model.Category</h2>
+                    <span class="meta">
+                        Posted by
+                        <a href="#">Start Bootstrap</a>
+                        on @Model.Created
+                    </span>
+                </div>
             </div>
-            <hr />
-        }
-        @{
-            await Html.RenderPartialAsync("Comment", new CommentViewModel { PostId = Model.Id, MainCommentId = 0 });
-        }
+        </div>
     </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <p class="text-break">@Model.Body</p>
+                @if (!String.IsNullOrEmpty(Model.Image))
+                {
+                    var imagePath = $"{base_path}/Image/{Model.Image}";
+                    <img class="img-fluid" src="@imagePath" alt="Alternate Text" />
+                }
+                <span class="caption text-muted">To go places and do things that have never been done before – that’s what living is all about.</span>
+            </div>
+        </div>
+    </div>
+</article>
+<div class="container">
+    @foreach (var comm in Model.MainComments)
+    {
+        <div class="container" style="margin: 15px;">
+            <p>
+                @comm.Message
+            </p>
+            <p class="float-right">Posted: @comm.CreatedComment</p>
+        </div>
+        <hr />
+    }
+    @{
+        await Html.RenderPartialAsync("Comment", new CommentViewModel { PostId = Model.Id, MainCommentId = 0 });
+    }
+</div>
