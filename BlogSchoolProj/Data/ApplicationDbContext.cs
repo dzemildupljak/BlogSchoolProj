@@ -19,6 +19,5 @@ namespace BlogSchoolProj.Data
 
         public DbSet<Post> Posts { get; set; }
         public DbSet<MainComment> MainComments { get; set; }
-        public DbSet<SubComment> SubComments { get; set; }
     }
 }

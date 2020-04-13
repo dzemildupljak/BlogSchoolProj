@@ -69,15 +69,6 @@ namespace BlogSchoolProj.Controllers
 
                 _repo.UpdatePost(post);
             }
-            else
-            {
-                var comment = new SubComment
-                {
-                    MainCommentId = vm.MainCommentId,
-                    Message = vm.Massage,
-                    CreatedComment = DateTime.Now
-                };
-            }
 
             await _repo.SaveChangesAsync();
             return RedirectToAction("Post", new { id = vm.PostId });

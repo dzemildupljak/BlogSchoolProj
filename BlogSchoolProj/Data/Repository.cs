@@ -73,9 +73,7 @@ namespace BlogSchoolProj.Data
         public Post GetPost(int id)
         {
             var post = _db.Posts
-                .Include(p => p.MainComments)
-                    .ThenInclude(mc => mc.SubComments)
-                .FirstOrDefault(p => p.Id == id);
+                .Include(p => p.MainComments).FirstOrDefault(p => p.Id == id);
             return post;
         }
 
@@ -91,11 +89,6 @@ namespace BlogSchoolProj.Data
                 return true;
             }
             return false;
-        }
-
-        public void AddSubComment(SubComment subComment)
-        {
-            _db.SubComments.Add(subComment);
         }
     }
 }

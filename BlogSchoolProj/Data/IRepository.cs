@@ -17,8 +17,6 @@ namespace BlogSchoolProj.Data
         void UpdatePost(Post post);
         void DeletPost(int id);
 
-        void AddSubComment(SubComment subComment);
-
         Task<bool> SaveChangesAsync();
     }
 }

@@ -6,10 +6,32 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Shool Blog</h1>
+    @*<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@
 </div>
 <div class="container">
+    <div class="dropdown">
+        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Category
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="text-dark dropdown-item" asp-area="" asp-controller="Home" asp-action="Index" asp-route-category="">All</a>
+            <a class="text-dark dropdown-item" asp-area="" asp-controller="Home" asp-action="Index" asp-route-category="Category1">Category1</a>
+            <a class="text-dark dropdown-item" asp-area="" asp-controller="Home" asp-action="Index" asp-route-category="Category2">Category2</a>
+            <a class="text-dark dropdown-item" asp-area="" asp-controller="Home" asp-action="Index" asp-route-category="Category3">Category3</a>
+        </div>
+    </div>
+    <hr />
+    <div>
+        @if (Model.Category == null)
+        {
+            <h5>Category: All category</h5>
+        }
+        else
+        {
+            <h5>Category: @Model.Category</h5>
+        }
+    </div>
     <ul>
         @foreach (var post in Model.Posts)
         {
